@@ -23,7 +23,6 @@ import EntryModal from './components/EntryModal';
 import { mainListItems } from './components/listItems';
 import { db, SignInScreen } from './utils/firebase';
 import { emptyEntry } from './utils/mutations';
-
 // MUI styling constants
 
 const drawerWidth = 240;
