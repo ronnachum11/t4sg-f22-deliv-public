@@ -13,7 +13,7 @@ import TextField from '@mui/material/TextField';
 import * as React from 'react';
 import { useState } from 'react';
 import { categories } from '../utils/categories';
-import { addEntry, updateEntry, deleteEntry, addMassEntries } from '../utils/mutations';
+import { addEntry, updateEntry, deleteEntry, downloadData, eraseData } from '../utils/mutations';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Modal component for individual entries.
@@ -67,11 +67,11 @@ export default function EntryModal({ entry, type, user }) {
       handleClose();
    };
 
-   const handleAddMass = () => {
-      const file = " ";
-      addMassEntries(file).catch(console.error);
-      handleClose();
-   }
+   // const handleAddMass = () => {
+   //    const file = " ";
+   //    addMassEntries(file).catch(console.error);
+   //    handleClose();
+   // }
 
    // TODO: Add Edit Mutation Handler
    const handleEdit = () => {
@@ -94,6 +94,16 @@ export default function EntryModal({ entry, type, user }) {
       handleClose();
    };
 
+   const handleDownload = () => {
+      downloadData(user).catch(console.error);
+      handleClose();
+   }
+
+   const handleErase = () => {
+      eraseData(user).catch(console.error);
+      handleClose()
+   }
+
 
    // Button handlers for modal opening and inside-modal actions.
    // These buttons are displayed conditionally based on if adding or editing/opening.
@@ -108,9 +118,10 @@ export default function EntryModal({ entry, type, user }) {
          <Button variant="contained" onClick={handleClickOpen}>
             Add entry
          </Button>
-         {/* <Button variant="contained" onClick={handleClickOpenMass}>
-            Add mass entries (.csv)
-         </Button> */}
+         <p></p>
+         <Button variant="contained" onClick={handleDownload}>Download Data</Button>
+         <p></p>
+         <Button variant="contained" onClick={handleErase}>Erase Data</Button>
          </div>
             : null;
         

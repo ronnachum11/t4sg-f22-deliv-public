@@ -15,7 +15,7 @@ import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import firebase from 'firebase/compat/app';
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import './App.css';
 import EntryTable from './components/EntryTable';
